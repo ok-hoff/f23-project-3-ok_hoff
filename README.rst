@@ -21,7 +21,7 @@ Summary
 ~~~~~~~
 For this project, you will implement a parallel zip (pzip) program, using the C programming language and POSIX-threads. The pzip will read an input text file, which is composed of lowercase letters (a-z) only. As an output it will produce a binary file indicating the consecutive uses of each character. The pzip operation needs to be done in paralel using pthreads library. 
 
-.. image:: images/p3_overview.jpg
+.. image:: images/p3_overview.png
    :width: 100 %
 
 The figure above shows an overview of the inputs, outputs and your program will flow. You are expected to implement the middle portion indicated by ``pzip(inputs,outputs)``. Within this function, there are three major steps that you should follow to establish the parallel threads logic:
@@ -115,22 +115,38 @@ Examples
 * ``int input_chars_size = 12;``
 * ``char* input = {'a','a','e','e','o','o','o','o','o','e','e','e'};``
 * ``int n_threads = 2;``
-* ``struct zipped_char\* zipped_chars = {{'a',2}, {'e','2'},{'o',2},{'o',3},{'e',3}};``
-* Binary output file (in hexa-decimal): ``61 02 65 02 6f 02 6f 03 65 03``
+* ``struct zipped_char\* zipped_chars = {{'a',2}, {'e','2'},{'o',2},{'o',3},
+  {'e',3}};``
+* Binary output file (in hexa-decimal): 
+
+  ``61 02 65 02 6f 02 6f 03 65 03``
 * Text (--debug) output file (in plain text, new lines are ommitted):      
   a 2 e 2 o 2 o 3 e 3
 
 
 2. Example 2
 
-* Input file content: ``aaeeoooooeeeeeeeeeeaaaaaaaaaadddddddddsssssssussssssyyyyyywwwwww``
+* Input file content:
+
+  ``aaeeoooooeeeeeeeeeeaaaaaaaaaadddddddddssssssslssssssyyyyyywwwwww``
+
 * ``int input_chars_size = 64;``
-* ``char* input = {`a`,`a`,`e`,`e`,`o`,`o`,`o`,`o`,`o`,`e`,`e`,`e`,`e`,`e`,`e`,`e`,`e`,`e`,`e`,`a`,`a`,`a`,`a`,`a`,`a`,`a`,`a`,`a`,`a`,`d`,`d`,`d`,`d`,`d`,`d`,`d`,`d`,`d`,`s`,`s`,`s`,`s`,`s`,`s`,`s`,`u`,`s`,`s`,`s`,`s`,`s`,`s`,`y`,`y`,`y`,`y`,`y`,`y`,`w`,`w`,`w`,`w`,`w`,`w`};``
+* ``char* input = {`a`,`a`,`e`,`e`,`o`,`o`,`o`,`o`,`o`,`e`,`e`,`e`,`e`,`e`,
+  `e`,`e`,`e`,`e`,`e`,`a`,`a`,`a`,`a`,`a`,`a`,`a`,`a`,`a`,`a`,`d`,`d`,`d`,
+  `d`,`d`,`d`,`d`,`d`,`d`,`s`,`s`,`s`,`s`,`s`,`s`,`s`,`l`,`s`,`s`,`s`,`s`,
+  `s`,`s`,`y`,`y`,`y`,`y`,`y`,`y`,`w`,`w`,`w`,`w`,`w`,`w`};``
 * ``int n_threads = 4;``
-* ``struct zipped_char\* zipped_chars = {{'a',2}, {'e','2'},{'o',5},{'e',7},{'e',3},{'a',10},{'d',3},{'d',6},{'s',7},{'u',1},{'s',2},{'s',4},{'y',6},{'w',6}};``
-* Binary output file (in hexa-decimal): ``61 02 65 02 6f 05 65 07 65 03 61 0a 64 03 64 06 73 07 75 01 73 02 73 04 79 06 77 06``
+* ``struct zipped_char\* zipped_chars = {{'a',2}, {'e','2'},{'o',5},{'e',7},
+  {'e',3},{'a',10},{'d',3},{'d',6},{'s',7},{'l',1},{'s',2},{'s',4},{'y',6},
+  {'w',6}};``
+* Binary output file (in hexa-decimal): 
+
+  ``61 02 65 02 6f 05 65 07 65 03 61 0a 64 03 64 06 73 07 6c 01 73 02 73 04 79 
+  06 77 06``
+
 * Text (--debug) output file (in plain text, new lines are ommitted):
-  a 2 e 2 o 5 e 7 e 3 a 10 d 3 d 6 s 7 u 1 s 2 s 4 y 6 w 6
+
+  a 2 e 2 o 5 e 7 e 3 a 10 d 3 d 6 s 7 l 1 s 2 s 4 y 6 w 6
 
 
 .. warning::
