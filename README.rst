@@ -22,7 +22,7 @@ Summary
 For this project, you will implement a parallel zip (pzip) program, using the C programming language and POSIX-threads. The pzip will read an input text file, which is composed of lowercase letters (a-z) only. As an output it will produce a binary file indicating the consecutive uses of each character. The pzip operation needs to be done in paralel using pthreads library. 
 
 .. image:: images/p3_overview.jpg
-   :width: 600
+   :width: 100 %
 
 The figure above shows an overview of the inputs, outputs and your program will flow. You are expected to implement the middle portion indicated by ``pzip(inputs,outputs)``. Within this function, there are three major steps that you should follow to establish the parallel threads logic:
 
