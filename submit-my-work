@@ -264,8 +264,10 @@ $ git commit -am \"Ran clang-format\""
 
 (struct deliverable (name git-tag presubmit-checks due-date))
 
+; this is how to update the project deliverable due dates
+; the last parameter is epoch time
 (define project-deliverables
-  (vector (deliverable "Final Submission" "project-submission" '() 1604386799)))
+  (vector (deliverable "Final Submission" "project-submission" '() 1616219999)))
 
 (define (prompt-deliverable deliverables)
   (define current-tags
