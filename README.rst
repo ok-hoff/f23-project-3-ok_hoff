@@ -66,7 +66,7 @@ What is implemented for you?
 * Output file formatting, writing and coversion (i.e., mapping) from ``zipped_chars`` array
 * Debug output
 
-To ease your implementation and to make grading fairer, using the starter code *is a requirement of this project*. You are **NOT ALLOWED** to make any modification to the ``main/pzip.c`` file. 
+To ease your implementation and to make grading fairer, using the starter code *is a requirement of this project*. You are **NOT ALLOWED** to make any modification to the ``main/pzip.c`` file. You may add new structs or functions to the ``main/pzip.h`` file. However, you **SHOULD NOT** change/delete/modify existing functions/variables/headers/structs in ``main/pzip.h`` file.
 
 What are you expected to do?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
