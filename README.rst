@@ -6,7 +6,7 @@ CSCI-442 Project 3: Parallel Zip
    * You'll want to read this **entire document** before beginning the project.  Please ask any questions you have on Piazza, but only if this README does not answer your question.
    * Finally, be sure to start early.  If you wait until a few days before the due date, you are unlikely to finish in time.
 
-This project has a single deadline: **Friday, March 18th 11:59:59 PM**. As outlined in the course syllabus, you may extend this deadline using slip days. 
+This project has a single deadline: **Thursday, March 18th 11:59:59 PM**. As outlined in the course syllabus, you may extend this deadline using slip days. 
 
 Project Desciption
 ------------------
