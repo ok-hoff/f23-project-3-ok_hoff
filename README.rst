@@ -6,7 +6,7 @@ CSCI-442 Project 3: Parallel Zip
    * You'll want to read this **entire document** before beginning the project.  Please ask any questions you have on Piazza, but only if this README does not answer your question.
    * Finally, be sure to start early.  If you wait until a few days before the due date, you are unlikely to finish in time.
 
-This project has a single deadline: **Thursday, March 18th 11:59:59 PM**. As outlined in the course syllabus, you may extend this deadline using slip days. 
+This project has a single deadline: **Monday, October 11th 11:59:59 PM**
 
 Project Desciption
 ------------------
@@ -52,10 +52,15 @@ Assumptions
 ~~~~~~~~~~~
 
 * The number of threads is assumed to be greater than or equal to zero.
+
 * The number of characters in the input file is assumed to be a positive multiple of the number of threads.
+
 * Each thread is expected to process an equal portion of the input characters.
+
 * **IMPORTANT:** If the consecutive occurrence of a character spans two threads, you **SHOULD NOT** merge these two occurrences and **SHOULD** report them separately. For example, in the image above, the character ``s`` appears twice for the first thread and, again, the same letter appears three times in the portion processed by the second thread. In the final output, rather than counting ``s`` for 5 times, we have two counts of it, which are 2 and 3, respectively. 
 
+* The number of the same character in a row will not exceed 255 (i.e.,
+  the maximum value of a ``uint8_t``)
 
 What is implemented for you?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -168,6 +173,16 @@ We will be grading your code based on:
 * General requirements:
         Your program should follow the non-project-specific general requirements indicated below.
 
+.. warning::
+
+        You will **NOT** receive performance points if your code is not correct. Slow, but correct programs are **always** more valuable than fast,
+        incorrect programs, and this is reflected in the grading of this project.
+
+        Additionally, we will be using ``diff`` to verify correctness. This means you will *not* get partial credit on a within-test basis
+        (i.e., you will either pass, or fail, each individual test. There is no in-between)
+
+        Lastly, if your program crashes during execution, it will be considered "incorrect", *regardless of whether it produces the correct output file*.
+
 Performance Measurement
 ~~~~~~~~~~~~~~~~~~~~~~~
 * To test whether your program properly AND efficiently use threads, we will run your program with large test files (e.g. ``test/input_large``). We will use the following formula to evaluate the 'parallel efficiency', i.e., ``PE``, of your code:
@@ -180,40 +195,46 @@ Performance Measurement
 
 Performance Criteria
 ~~~~~~~~~~~~~~~~~~~~
+
 * On Isengard, our solution for the parameters in the above command runs under 1 second (``WALL_TIME < 1``) with a ``PE`` greater than 0.75. 
 
-* Your program is expected to run the command above on Isengard under 2 seconds (``WALL_TIME < 2``) with a pe greater than 0.5 (``PE > 0.5``). Please note that these values are valid only for the input file referenced above (/tmp/CSCI-442--DO-NOT-DELETE/input_huge) and with ``N_THREADS=8`` on Isengard. Your first run may be slower due to internal page caching. You will get three runs, and the fastest will be used for your grade.
+* Your program is expected to run the command above on Isengard under 1.5 seconds (``WALL_TIME < 1.5``) with a pe greater than 0.5 (``PE > 0.5``).
+  
+        * Please note that these values are valid only for the input file referenced above (``/tmp/CSCI-442--DO-NOT-DELETE/input_huge``) and with ``N_THREADS=8`` on Isengard.
+          
+        * Your first run may be slower due to internal page caching. You will get three runs, and the fastest will be used for your grade.
+
+        * Note: If you have a ``WALL_TIME < 0.25``, then your PE does
+          not need to meet the requirement of ``> 0.5``.
 
 * If your code fails to meet the performance criteria above, you will get a partial grade, depending on how fast and efficient your code is.
 
-* The top three fastest and correct submissions will be given +3, +2 and +1 extra points, respectively. 
+        * Reminder: you will receive **NO** performance points if your
+          program does not produce the correct output or crashes. 
+
+* **The top three fastest and correct submissions will be given +3, +2 and +1 extra points, respectively.**
 
 Submission Information
 ~~~~~~~~~~~~~~~~~~~~~~
 
-**Gradescope will NOT be used for submitting Project 3**
+Submission of your project will be handled via **Gradescope**.
 
-Submission of your project will be handled using GitHub classroom.
+1. Create the submission file using the provided ``make-submission`` script::
 
-To submit your work, type (from the base of the repo)::
+        prompt> ./make-submission
 
-   $ ./submit-my-work
+2. This will create a ``.zip`` file named ``$USER-submission`` (e.g., for me, this would be named ``lhenke-submission.zip``).
 
-This should be done on Isengard, even if you have developed
-from a computer at home.  You can SSH into Isengard, clone
-your code, and test it there.
+3. Submit this ``.zip`` file to Gradescope. You will get a confirmation email if you did this correctly.
 
-The script will run some minimal automated checks (e.g., check that
-your code compiles), and prompt you for any info required on your
-submission, including calculating slip days.
+You can re-submit as many times as you want before the due date, but note the project will not be graded until
+after the due date, **NOT** on-submission (similar to Canvas).
 
 .. warning::
+        You are **REQUIRED** to use ``make-submission`` to form the ``.zip`` file. Failure to do so
+        may cause your program to not compile on Gradescope. A penalty to your grade will be applied
+        if you need to resubmit due to compilation issues stemming from not using this script.
 
-        Only code that has been **committed** with git will be included in your submission (*not* merely saved to a ``.c`` file). **Make sure to commit all of your code before submitting!**
-
-.. warning::
-        
-        We're not joking, you need to remember to do this (hence the *second* warning box) --- **Make sure to commit all of your code before submitting!**
 
 General Requirements
 --------------------
@@ -234,8 +255,7 @@ General Requirements
   execute on Isengard.
 
 - You should follow `Linux Kernel coding style`_, a common style guide
-  for open-source C projects.  A small number of points will be
-  deducted on projects which do not follow this style guide.
+  for open-source C projects.
 
 - Your project must not execute external programs or use network
   resources.
