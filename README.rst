@@ -6,7 +6,7 @@ CSCI-442 Project 3: Parallel Zip
    * You'll want to read this **entire document** before beginning the project.  Please ask any questions you have on Piazza, but only if this README does not answer your question.
    * Finally, be sure to start early.  If you wait until a few days before the due date, you are unlikely to finish in time.
 
-This project has a single deadline: **Monday, October 11th 11:59:59 PM**
+See canvas for the project due date. 
 
 Project Desciption
 ------------------
@@ -91,9 +91,15 @@ The input file is already parsed into an ``input_chars`` array for you and the t
 * ``int input_chars_size = 12;``
 * ``char* input = {'a','a','e','e','o','o','o','o','o','e','e','e'};``
 
-You may generate inputs of any size of NUM by using the following script in your repository root::
+You should generate inputs of any size of NUM by using the following script in your repository root::
 
   $ ./generate_chars.py NUM > test_input
+
+.. warning::
+
+   **DO NOT GENERATE FILES MANUALLY USING A TEXT EDITOR**
+   The input files are only lower case letters with nothing else. The use of text editors may accidentally inject a newline into your input file. Please use the provided python script or run the command below to clean your files of any newlines. 
+   $ cat FILENAME | tr -d '\n' > NEWFILENAME
 
 Output Format
 ~~~~~~~~~~~~~
@@ -154,6 +160,20 @@ Example 2
 
   a 2 e 2 o 5 e 7 e 3 a 10 d 3 d 6 s 7 l 1 s 2 s 4 y 6 w 6
 
+Example 3
+"""""""""
+
+* Input file content: ``aaaaaaaaaaaa``
+* ``int input_chars_size = 12;``
+* ``char* input = {'a','a','a','a','a','a','a','a','a','a','a','a'};``
+* ``int n_threads = 4;``
+* ``struct zipped_char\* zipped_chars = {{'a',3}, {'a','3'},{'a',3},{'a',3}};``
+* Binary output file (in hexa-decimal): 
+
+  ``61 03 61 03 61 03 61 03``
+* Text (--debug) output file (in plain text, new lines are ommitted):      
+  a 3 a 3 a 3 a 3 
+
 
 .. warning::
   Note that the zipped output file is not fully compressed. In example 1, the zipped chars could have been determined as ``{{'a',2}, {'e','2'},{'o',5},{'e',3}};`` . However, for the sake of simplicity for the project, we do not ask parallel threads to talk to each other and merge their output. You are not asked to implement this functionality, and your program may not pass our automated tests if you implement this optimization.
@@ -176,12 +196,15 @@ We will be grading your code based on:
 .. warning::
 
         You will **NOT** receive performance points if your code is not correct. Slow, but correct programs are **always** more valuable than fast,
-        incorrect programs, and this is reflected in the grading of this project.
+        incorrect programs, and this is reflected in the grading of this project. But also keep in mind that the autograder has a 5 minute timeout as 
+        none of the test cases should take longer than that to complete (even input-huge). 
 
         Additionally, we will be using ``diff`` to verify correctness. This means you will *not* get partial credit on a within-test basis
         (i.e., you will either pass, or fail, each individual test. There is no in-between)
 
-        Lastly, if your program crashes during execution, it will be considered "incorrect", *regardless of whether it produces the correct output file*.
+        Lastly, if your program crashes during execution, it will be considered "incorrect", *regardless of whether it produces the correct output file*. Due to this it is **VITAL** that 
+        all memory issues are taken care of as these can cause code to crash. It is possible to have memory issues even when you don't call malloc especially in this project where memory is being 
+        divided up for the threads!
 
 Performance Measurement
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -213,6 +236,22 @@ Performance Criteria
           program does not produce the correct output or crashes. 
 
 * **The top three fastest and correct submissions will be given +3, +2 and +1 extra points, respectively.**
+
+Testing Input Huge
+~~~~~~~~~~~~~~~~~~~~~~
+
+To validate if your output for input_huge is correct, we provide the hash of the correct input_huge output below. 
+output_huge_8t solution hash:
+  $ 2f7c59a2ff08217dd0ac35fa4a437e92
+
+You can check the hash of your output via the command below
+  $ md5sum FILENAME
+Where FILENAME is the name of your output file.
+
+If your hash does not match up, then there is an error in your code. 
+Do make sure to run it multiple to make sure your code is not outputing the correct solution only some of the time. 
+Memory issues are able to make your code output the correct output on some runs but incorrect output on other runs. 
+
 
 Submission Information
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -246,7 +285,7 @@ General Requirements
 - You should handle errors gracefully. All system calls can fail: if this occurs
   print a relavent and descriptive error to ``stderr`` (*not* ``stdout``) and exit.
   Your program should have a non-zero exit status if any errors are
-  encountered.
+  encountered. (Make sure to add '\n's to those errors too!)
 
 - Your program should have a zero exit status if no errors are
   encountered.
@@ -311,5 +350,13 @@ login, use this command::
 
 Note: you need to be on the campus network or VPN for this to work.
 If you are working from home, use either the VPN or hop thru
-``jumpbox.mines.edu`` first.
+``imagine.mines.edu`` first as shown below.
+
+To ``ssh`` into the machine with your campus MultiPass
+login, **outside** of campus use this command::
+
+  $ ssh -J username@imagine.mines.edu username@isengard.mines.edu
+
+Note: For this command you will need to input your multipass password twice. 
+Once for imagine.mines.edu and second for isengard. 
 
