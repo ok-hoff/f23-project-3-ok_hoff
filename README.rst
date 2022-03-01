@@ -248,6 +248,7 @@ output_huge_8t solution hash:
 You can check the hash of your output via the command below
 
   $ md5sum FILENAME
+
 Where FILENAME is the name of your output file.
 
 If your hash does not match up, then there is an error in your code. 
