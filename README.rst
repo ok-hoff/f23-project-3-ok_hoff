@@ -242,9 +242,11 @@ Testing Input Huge
 
 To validate if your output for input_huge is correct, we provide the hash of the correct input_huge output below. 
 output_huge_8t solution hash:
+
   $ 2f7c59a2ff08217dd0ac35fa4a437e92
 
 You can check the hash of your output via the command below
+
   $ md5sum FILENAME
 Where FILENAME is the name of your output file.
 
