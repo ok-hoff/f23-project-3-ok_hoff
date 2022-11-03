@@ -329,7 +329,7 @@ You will be using the following pthread library calls:
 - ``pthread_mutex_unlock``
 - ``pthread_barrier_wait``
 
-Please refer to https://computing.llnl.gov/tutorials/pthreads/ for tutorials on how to use pthreads. 
+Please refer to http://lemuria.cis.vtc.edu/~pchapin/TutorialPthread/pthread-Tutorial.pdf and https://www.cs.cmu.edu/afs/cs/academic/class/15492-f07/www/pthreads.html for tutorials on how to use pthreads. 
 
 Collaboration Policy
 --------------------
