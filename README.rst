@@ -334,8 +334,8 @@ Please refer to http://lemuria.cis.vtc.edu/~pchapin/TutorialPthread/pthread-Tuto
 Collaboration Policy
 --------------------
 
-This is an **individual project**.  All code you submit should be
-written by yourself.  You should not share your code with others.
+This is an **team project**.  All code you submit should be
+written by your team.  You should not share your code with others.
 
 Please see the syllabus for the full collaboration policy.
 
