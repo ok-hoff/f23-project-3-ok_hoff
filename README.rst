@@ -3,7 +3,7 @@ CSCI-442 Project 3: Parallel Zip
 
 .. important::
 
-   * You'll want to read this **entire document** before beginning the project.  Please ask any questions you have on Piazza, but only if this README does not answer your question.
+   * You'll want to read this **entire document** before beginning the project.  Please ask any questions you have on the discussion board.
    * Finally, be sure to start early.  If you wait until a few days before the due date, you are unlikely to finish in time.
 
 See Canvas for the project due date. 
