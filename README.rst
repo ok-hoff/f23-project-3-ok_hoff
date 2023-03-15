@@ -51,7 +51,7 @@ After running ``make``, you should have an executable program named ``pzip`` loc
 1.4) Assumptions
 ~~~~~~~~~~~
 
-* The number of threads is assumed to be greater than or equal to zero.
+* The number of threads is assumed to be greater than or equal to one.
 
 * The number of characters in the input file is assumed to be a positive multiple of the number of threads.
 
