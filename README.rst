@@ -339,15 +339,15 @@ Please refer to http://lemuria.cis.vtc.edu/~pchapin/TutorialPthread/pthread-Tuto
 7) Reference Executables
 -----------------------------------
 
-Provided for you is a reference executable file called ``pzip_instructor``.
-It is a working version of the project that scored 100% in the autograder.
-You may use it to help understand the behavior of a working project as well as double check any of your outputs.
+Provided for you are three reference executable files:
+* ``pzip_instructor_isengard``: It is a working version of the project that scored 100% in the autograder. You may use it to help understand the behavior of a working project as well as double check any of your outputs.
 It is included in this template repository and can be run with ``./pzip_instructor``.
 Things to keep in mind about the reference executable:
-
-* It was developed on Isengard and is only guaranteed to work on Isengard.
-* This solution is not the ideal solution. If you are running it on the input_huge, out of three runs, it will have a WALL TIME < 1.5 and a PE > .75 which is expected of your submission as well.
-* It is an instructor version and you may not execute it from within your own code. You will recieve a zero if you do!
+  * It was developed on Isengard and is only guaranteed to work on Isengard.
+  * This solution is not the ideal solution. If you are running it on the input_huge, out of three runs, it will have a WALL TIME < 1.5 and a PE > .75 which is expected of your submission as well.
+  * It is an instructor version and you may not execute it from within your own code. You will recieve a zero if you do!
+* ``pzip_instructor_arm`` and ``pzip_instructor_x86``: These binaries are the solutions compiled for the docker images you are working on. You may use these binaries to make sure that your code is functionally working probably. 
+  * Please do not use docker binaries for performance evaluation, since the performance of your development machine will vary. Use Isengard binary on Isengard to compare your performance to the solution. 
 
 8) Collaboration Policy
 --------------------
@@ -370,8 +370,6 @@ login, use this command::
 
   $ ssh username@isengard.mines.edu
   
-A tutorial has been linked in the discussion board to ``ssh`` via Visual Studio Code.
-
 Note: you need to be on the campus network or VPN for this to work.
 If you are working from home, use either the VPN or hop thru
 ``jumpbox.mines.edu`` first.
