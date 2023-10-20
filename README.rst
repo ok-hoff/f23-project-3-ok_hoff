@@ -340,7 +340,8 @@ Please refer to http://lemuria.cis.vtc.edu/~pchapin/TutorialPthread/pthread-Tuto
 -----------------------------------
 
 Provided for you are three reference executable files:
-* ``pzip_instructor_isengard``: It is a working version of the project that scored 100% in the autograder. You may use it to help understand the behavior of a working project as well as double check any of your outputs.
+
+``pzip_instructor_isengard``: It is a working version of the project that scored 100% in the autograder. You may use it to help understand the behavior of a working project as well as double check any of your outputs.
 It is included in this template repository and can be run with ``./pzip_instructor``.
 Things to keep in mind about the reference executable:
   * It was developed on Isengard and is only guaranteed to work on Isengard.
