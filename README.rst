@@ -256,8 +256,19 @@ Do make sure to run it multiple to make sure your code is not outputing the corr
 Memory issues are able to make your code output the correct output on some runs but incorrect output on other runs. 
 
 
-3) Submission Information
-~~~~~~~~~~~~~~~~~~~~~~
+3) Development Workflow
+--------------------
+The performance criteria given above is based on the execution on isengard.mines.edu. Howver, due to limited capacity of Isengard, we suggest you establish the following workflow:
+* As with prior projects, do the initial development on your local Docker image. 
+* Once you complete the initial functionality, push your changes to github.
+* Pull your repo on isengard and test for performance.
+* Either use vim/emacs on Isengard or push/pull on your local Docker image to fix problems and continue development. 
+
+We STRONGLY discourage you connecting VSCode to Isengard via the ssh plugin. VSCode runs linters and syntax checks on Isengard, which in turn puts heavy pressure on Isengard. We had severe performance problems in the past, especially in the last two days of submissions. Therefore do as much development as you can locally. We won't be able to help you if you leave Isengard testing to the last days and if Isengard becomes too crowded. 
+
+
+4) Submission Information
+--------------------
 
 Submission of your project will be handled via **Gradescope**.
 
@@ -274,7 +285,7 @@ Submission of your project will be handled via **Gradescope**.
         may cause your program to not compile on Gradescope. 
 
 
-4) General Requirements
+5) General Requirements
 --------------------
 
 - You are **REQUIRED** to use Isengard to develop and test this project.
@@ -310,7 +321,7 @@ Submission of your project will be handled via **Gradescope**.
 
 .. _Linux Kernel coding style: https://www.kernel.org/doc/html/v5.8/process/coding-style.html
 
-5) Resources
+6) Resources
 ---------
 
 You will be using some or all of the following pthread library calls:
@@ -325,7 +336,7 @@ You will be using some or all of the following pthread library calls:
 
 Please refer to http://lemuria.cis.vtc.edu/~pchapin/TutorialPthread/pthread-Tutorial.pdf and https://www.cs.cmu.edu/afs/cs/academic/class/15492-f07/www/pthreads.html for tutorials on how to use pthreads. 
 
-6) Reference Executables
+7) Reference Executables
 -----------------------------------
 
 Provided for you is a reference executable file called ``pzip_instructor``.
@@ -338,7 +349,7 @@ Things to keep in mind about the reference executable:
 * This solution is not the ideal solution. If you are running it on the input_huge, out of three runs, it will have a WALL TIME < 1.5 and a PE > .75 which is expected of your submission as well.
 * It is an instructor version and you may not execute it from within your own code. You will recieve a zero if you do!
 
-7) Collaboration Policy
+8) Collaboration Policy
 --------------------
 
 This is an **individual project**.  All code you submit should be
@@ -348,7 +359,7 @@ Please see the syllabus for the full collaboration policy.
 
    **WARNING: Plagarism will be punished harshly!**
 
-8) Access to Isengard
+9) Access to Isengard
 ------------------
 
 Remote access to Isengard is quite similar to ALAMODE, but the
