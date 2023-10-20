@@ -346,6 +346,7 @@ Things to keep in mind about the reference executable:
   * It was developed on Isengard and is only guaranteed to work on Isengard.
   * This solution is not the ideal solution. If you are running it on the input_huge, out of three runs, it will have a WALL TIME < 1.5 and a PE > .75 which is expected of your submission as well.
   * It is an instructor version and you may not execute it from within your own code. You will recieve a zero if you do!
+
 * ``pzip_instructor_arm`` and ``pzip_instructor_x86``: These binaries are the solutions compiled for the docker images you are working on. You may use these binaries to make sure that your code is functionally working probably. 
   * Please do not use docker binaries for performance evaluation, since the performance of your development machine will vary. Use Isengard binary on Isengard to compare your performance to the solution. 
 
