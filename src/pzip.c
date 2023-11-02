@@ -84,12 +84,7 @@ void pzip(int n_threads, char *input_chars, int input_chars_size,
 			char_frequency[index] += value;
 			zipped_chars[j + nextIndex] = curr_thread.local_zipped_chars[j];
 		}
-
-		for(int j = 0; j < curr_thread.uniqueCharCount; j++){
-		}
-
 		nextIndex += curr_thread.uniqueCharCount;
-
 		free(threadData[i].local_zipped_chars);
 	}
 
