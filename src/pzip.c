@@ -88,22 +88,42 @@ void pzip(int n_threads, char *input_chars, int input_chars_size,
 		}
     }
 
-	for(int j = 0; j < n_threads; j++){
-		for(int i = 0; i < 26; i++){
-			printf("%d", threadData[j].frequencies[i]);
+	int nextIndex = 0;
+
+	for (int i = 0; i < n_threads; i++){
+		threadObj curr_thread = threadData[i];
+		// printf("%d\n", curr_thread.uniqueCharCount);
+		*zipped_chars_count = *zipped_chars_count + curr_thread.uniqueCharCount;
+		for(int j = 0; j < curr_thread.uniqueCharCount; j++){
+			int index = curr_thread.unique_chars->head->data - 'a';
+			int value = curr_thread.frequencies[index];
+			char_frequency[index] += value;
+			struct Node* temp = curr_thread.unique_chars->head;
+			curr_thread.unique_chars->head = curr_thread.unique_chars->head->next;
+			free(temp);
 		}
-		printf("\n");
+
+		for(int j = 0; j < curr_thread.uniqueCharCount; j++){
+			zipped_chars[j + nextIndex] = curr_thread.local_zipped_chars[j];
+		}
+
+		nextIndex += curr_thread.uniqueCharCount;
 	}
+
+	// for(int j = 0; j < n_threads; j++){
+	// 	for(int i = 0; i < 26; i++){
+	// 		printf("%d ", threadData[j].frequencies[i]);
+	// 	}
+	// 	printf("\n");
+	// }
 
 	free(threads);
 	free(threadData);
-
-	exit(0);
 }
 
-void* handleZip (void * arg){
+void* handleZip (void* arg){
 	threadObj* data = (threadObj*)arg;
-	int uniqueCharCount = 0;
+	int freq_order[data->range];
 	
 
 	for(int i = 0; i < 26; i++){
@@ -115,17 +135,27 @@ void* handleZip (void * arg){
 
 	for(int i = start; i < end; i++){
 		char currentChar = data->input_chars[i];
-		if(data->frequencies[currentChar - 'a'] == 0){
-			uniqueCharCount++;
+		if(i == start || currentChar != data->unique_chars->head->data){
+			data->uniqueCharCount += 1;
 			addNode(data->unique_chars, currentChar);
+
 		}
+		freq_order[data->uniqueCharCount - 1]++;
 		data->frequencies[currentChar - 'a']++;		
 	}
 
 	//THIS STILL NEEDS TO BE FREED
-	data->local_zipped_chars = malloc(uniqueCharCount * sizeof(struct zipped_char));
+	data->local_zipped_chars = malloc(data->uniqueCharCount * sizeof(struct zipped_char));
+	struct Node* temp = data->unique_chars->head;
+	for(int i = data->uniqueCharCount - 1; i >= 0; i--){
+		data->local_zipped_chars[i].character = temp->data;
+		data->local_zipped_chars[i].occurence = freq_order[i];
+		temp = temp->next;
+	}
 
-	pthread_exit(NULL);
+
+
+	return NULL;
 }
 
 void addNode(struct LinkedList* list, char data) {
